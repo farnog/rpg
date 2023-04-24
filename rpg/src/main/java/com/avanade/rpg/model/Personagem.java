@@ -4,11 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+import javax.persistence.*;
+import java.io.Serializable;
 
-public class Personagem {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="PERSONAGEM")
+@Entity
+public class Personagem implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID", nullable=false)
+    private long id;
     private String nome;
     private int pv;
     private int forca;
@@ -16,6 +24,4 @@ public class Personagem {
     private int agilidade;
     private int qtdDados;
     private int tipoDado;
-
-
 }

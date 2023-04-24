@@ -1,5 +1,7 @@
 package com.avanade.rpg.service;
 
+import com.avanade.rpg.model.Personagem;
+
 public class RpgService {
     public int JogarDado(int TipoDado, int Qtd){
         int valor;
@@ -10,5 +12,12 @@ public class RpgService {
             valor += (int) (Math.random() * TipoDado) + 1;
         }
 		return valor;
+    }
+
+    public Personagem Ataque(Personagem personagem){
+        return null;
+    }
+    public Personagem Defesa(Personagem personagem){
+        return null;
     }
 }

@@ -1,5 +1,7 @@
 package com.avanade.rpg.service;
 
+import com.avanade.rpg.exception.InvalidInputException;
+import com.avanade.rpg.exception.ResourceNotFoundException;
 import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.repository.RpgRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +14,38 @@ public class PersonagemService {
     @Autowired
     private RpgRepository repository;
 
+    public Personagem Criar(Personagem personagem){
+        //cravado criação do guerreiro
+        personagem.setNome("Guerreiro");
+        personagem.setPv(20);
+        personagem.setForca(7);
+        personagem.setDefesa(5);
+        personagem.setAgilidade(6);
+        personagem.setQtdDados(1);
+        personagem.setTipoDado(12);
+
+        return this.repository.save(personagem);
+    }
     public List<Personagem> Listar(){
         return repository.findAll();
     }
 
-    public List<Personagem> ListarPorId(Long id){
-        return null; //repository.findById(id);
+    public Personagem ListarPorId(Long id){
+        return repository.findById( id ).orElseThrow( ( ) -> new ResourceNotFoundException( "Personagem não encontrado: " + id ) );
     }
     public Personagem Selecionar(){
         return null;
     }
 
-    public Personagem Ataque(){
-        return null;
-    }
-    public Personagem Defesa(){
-        return null;
+
+    public void delete(Long id){
+        repository.deleteById(id);
     }
 
+    public Personagem update(Personagem personagem){
+        //if (null == personagem.getId()) {
+        //    throw new InvalidInputException( "There is no ID.");
+        //}
+        return repository.save(personagem);
+    }
 }
