@@ -30,17 +30,17 @@ public class PersonagemController {
         return new ResponseEntity<>(service.Criar(personagem), HttpStatus.CREATED);
     }
 
-    @PostMapping("/rpg")
+    @PutMapping("/rpg")
     @ApiOperation("Update personagem")
     public ResponseEntity<Personagem> update (@RequestBody Personagem personagem) {
         service.update(personagem);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/rpg")
+    @DeleteMapping("/rpg")
     @ApiOperation("Delete personagem")
-    public ResponseEntity<Personagem> update (@RequestBody Long personagemId) {
-        service.delete(personagemId);
+    public ResponseEntity<Personagem> update (@RequestBody Long pId) {
+        service.delete(pId);
         return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }
 
