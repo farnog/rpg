@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public abstract class Personagem {
+public class Personagem {
     private String nome;
     private int pv;
     private int forca;
