@@ -1,7 +1,9 @@
 package com.avanade.rpg.service;
 
 import com.avanade.rpg.model.Personagem;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RpgService {
     public int JogarDado(int TipoDado, int Qtd){
         int valor;
@@ -20,4 +22,5 @@ public class RpgService {
     public Personagem Defesa(Personagem personagem){
         return null;
     }
+
 }

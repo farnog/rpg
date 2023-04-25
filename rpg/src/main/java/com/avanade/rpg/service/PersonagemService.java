@@ -3,6 +3,7 @@ package com.avanade.rpg.service;
 import com.avanade.rpg.exception.InvalidInputException;
 import com.avanade.rpg.exception.ResourceNotFoundException;
 import com.avanade.rpg.model.Personagem;
+import com.avanade.rpg.model.Dado;
 import com.avanade.rpg.repository.RpgRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
@@ -16,13 +17,17 @@ public class PersonagemService {
 
     public Personagem Criar(Personagem personagem){
         //cravado criação do guerreiro
+
+        Dado dado = new Dado();
+        dado.setQtdDados(1);
+        dado.setTipoDado(12);
+
         personagem.setNome("Guerreiro");
         personagem.setPv(20);
         personagem.setForca(7);
         personagem.setDefesa(5);
         personagem.setAgilidade(6);
-        personagem.setQtdDados(1);
-        personagem.setTipoDado(12);
+        personagem.setDado(dado);
 
         return this.repository.save(personagem);
     }
