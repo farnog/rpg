@@ -16,11 +16,24 @@ public class RpgService {
 		return valor;
     }
 
-    public Personagem Ataque(Personagem personagem){
-        return null;
+    public int CalcularDano(Personagem heroi, Personagem monstro){
+        int ataque = JogarDado(heroi.getTipoDado(),heroi.getQtdDados())+heroi.getForca();
+        int defesa = JogarDado(monstro.getTipoDado(),monstro.getQtdDados())+monstro.getForca();
+
+        return ataque - defesa;
     }
-    public Personagem Defesa(Personagem personagem){
-        return null;
+
+    public Personagem Ataque(Personagem heroi, Personagem monstro){
+        int forcaAtaque = JogarDado(12, 1) + heroi.getForca()+heroi.getAgilidade();
+        int forcaDefesa = JogarDado(12,1) + monstro.getDefesa()+ monstro.getAgilidade();
+
+        if (forcaAtaque > forcaDefesa) {
+            CalcularDano(heroi, monstro);
+        }
+        return heroi;
+    }
+    public Personagem Defesa(Personagem heroi, Personagem monstro){
+        return heroi;
     }
 
 }
