@@ -14,13 +14,13 @@ public class RpgController {
     private RpgService service;
     @PostMapping("/rpg")
     @ApiOperation("Atacando")
-    public ResponseEntity<Personagem> Ataque (@RequestBody Personagem heroi, Personagem monstro) {
-        service.Ataque(heroi, monstro);
+    public ResponseEntity<Personagem> Ataque (@RequestBody Personagem heroi) {
+        service.Ataque(heroi);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Personagem> Defesa (@RequestBody Personagem heroi, Personagem monstro) {
-        service.Defesa(heroi, monstro);
+    public ResponseEntity<Personagem> Defesa (@RequestBody Personagem monstro) {
+        service.Defesa(monstro);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
