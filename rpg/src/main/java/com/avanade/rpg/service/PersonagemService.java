@@ -4,7 +4,7 @@ import com.avanade.rpg.exception.InvalidInputException;
 import com.avanade.rpg.exception.ResourceNotFoundException;
 import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.model.Dado;
-import com.avanade.rpg.repository.RpgRepository;
+import com.avanade.rpg.repository.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class PersonagemService {
     @Autowired
-    private RpgRepository repository;
+    private PersonagemRepository repository;
 
     public Personagem Criar(Personagem personagem){
         //cravado criação do guerreiro
