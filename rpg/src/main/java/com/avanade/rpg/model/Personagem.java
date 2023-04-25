@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Table(name="PERSONAGEM")
 @Entity
-public abstract class Personagem implements Serializable {
+public class Personagem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID", nullable=false)
@@ -22,6 +22,8 @@ public abstract class Personagem implements Serializable {
     private int forca;
     private int defesa;
     private int agilidade;
-    private Dado dado;
+    //private Dado dado;
+    private int qtdDados;
+    private int tipoDado;
     private char tipoPersonagem; // H-Herói | M-Monstro
 }

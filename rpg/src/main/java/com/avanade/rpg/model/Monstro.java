@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Table(name="MONSTRO")
 @Entity
 
-public final class Monstro extends Personagem{
+public final class Monstro extends Personagem implements Serializable {
     @Autowired
     private Personagem monstro;
     public void setMonstro(Personagem monstro) {
