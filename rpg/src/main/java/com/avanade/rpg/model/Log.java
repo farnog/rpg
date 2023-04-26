@@ -16,8 +16,17 @@ public class Log implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID", nullable=false)
     private long id;
-    private Personagem heroi;
-    private Personagem monstro;
-    private String iniciadoPor;
-    private Turno turno;
+    private long idAtq;
+    private long idDef;
+    private String turno;
+
+    @Override
+    public String toString() {
+        return "Log{" +
+                "ID=" + id +
+                ", idPersonagemAtq='" + idAtq +
+                ", idPersonagemDef='" + idDef +
+                ", Turno='" + Turno.class.toString() +
+                '}';
+    }
 }

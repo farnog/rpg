@@ -18,10 +18,24 @@ public class Turno implements Serializable {
     @Column(name="ID", nullable=false)
     private long id;
     private String jogadorInicio;
-    private Personagem heroi;
-    private Personagem monstro;
+    private long idAtq;
+    private long idDef;
     private int forcaAtaque;
     private int forcaDefesa;
     private int dano;
     private int pvAtualizado;
+
+    @Override
+    public String toString() {
+        return "Turno{" +
+                "numTurno=" + id +
+                ", jogadorInicio='" + jogadorInicio +
+                ", idAtq='" + idAtq +
+                ", idDef='" + idDef +
+                ", forcaAtaque='" + forcaAtaque +
+                ", forcaDefesa='" + forcaDefesa +
+                ", dano='" + dano +
+                ", pvAtualizadoAposAtq='" + pvAtualizado +
+                '}';
+    }
 }

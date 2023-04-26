@@ -1,9 +1,9 @@
 package com.avanade.rpg.repository;
 
-import com.avanade.rpg.model.Personagem;
+import com.avanade.rpg.model.Turno;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonagemRepository  extends JpaRepository<Personagem, Long> {
+public interface BatalhaRepository extends JpaRepository<Turno, Long> {
 }

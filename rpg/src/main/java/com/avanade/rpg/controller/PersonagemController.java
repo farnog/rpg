@@ -20,7 +20,7 @@ public class PersonagemController {
     private PersonagemService service;
 
     @GetMapping("/rpg")
-    @ApiOperation("Retornar todos personagens")
+    @ApiOperation("Exibir todos personagens")
     public ResponseEntity<List<Personagem>> getAll (){
         return new ResponseEntity<>(service.Listar(), HttpStatus.OK);
     }
@@ -68,9 +68,5 @@ public class PersonagemController {
     public ResponseEntity<String> Dano (@PathVariable( value = "idAtq" ) long idAtq, @PathVariable( value = "idDef" ) long idDef) {
         return new ResponseEntity<>(Integer.toString(service.CalcularDano(idAtq, idDef)),HttpStatus.OK);
     }
-    @GetMapping("/rpg/inicio")
-    @ApiOperation("Retornar iniciativa")
-    public ResponseEntity<String> Iniciativa (){
-        return new ResponseEntity<>(Integer.toString(service.Iniciativa()), HttpStatus.OK);
-    }
+
 }

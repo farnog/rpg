@@ -2,9 +2,7 @@ package com.avanade.rpg.service;
 
 import com.avanade.rpg.config.Utilidade;
 import com.avanade.rpg.exception.ResourceNotFoundException;
-import com.avanade.rpg.model.Jogador;
 import com.avanade.rpg.model.Personagem;
-import com.avanade.rpg.config.Utilidade;
 import com.avanade.rpg.repository.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -12,8 +10,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Service
 public class PersonagemService implements ApplicationRunner {
@@ -46,6 +42,7 @@ public class PersonagemService implements ApplicationRunner {
         repository.save(lobisomen);
 
     }
+
     public Personagem Criar(Personagem personagem){
         return this.repository.save(personagem);
     }
@@ -56,10 +53,6 @@ public class PersonagemService implements ApplicationRunner {
     public Personagem ListarPorId(Long id){
         return repository.findById( id ).orElseThrow( ( ) -> new ResourceNotFoundException( "Personagem não encontrado: " + id ) );
     }
-    public Personagem Selecionar(){
-        return null;
-    }
-
 
     public void delete(Long id){
         repository.deleteById(id);
@@ -100,12 +93,24 @@ public class PersonagemService implements ApplicationRunner {
         return valDano;
     }
 
-    public int CalcPv(int pv, int dano){
-        return ((pv - dano) <= 0) ? 0 : pv - dano;
-    }
-    public int Iniciativa() {
-        Utilidade util = new Utilidade();
-        return util.JogarDado(20, 1);
+    public Personagem CalcPv(long idAtq, long idDef){
+
+        int dano = CalcularDano(idAtq, idDef);
+
+        Personagem pDef = repository.getById(idDef);
+
+        int pvDef = pDef.getPv();
+
+        pDef.setPv (((pvDef - dano) <= 0) ? 0 : pvDef - dano);
+        return pDef;
     }
 
+    public int CalcPv(int dano, long idDef){
+
+        Personagem pDef = repository.getById(idDef);
+
+        int pvDef = pDef.getPv();
+
+        return (((pvDef - dano) <= 0) ? 0 : pvDef - dano);
+    }
 }

@@ -1,7 +1,5 @@
 package com.avanade.rpg.config;
 
-import com.avanade.rpg.model.Jogador;
-
 public class Utilidade {
     public int JogarDado(int TipoDado, int Qtd){
         int valor;
