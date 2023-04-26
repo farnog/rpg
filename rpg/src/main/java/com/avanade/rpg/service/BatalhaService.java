@@ -10,7 +10,6 @@ import com.avanade.rpg.repository.LogRepository;
 import com.avanade.rpg.repository.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.avanade.rpg.exception.InvalidInputException;
 
 @Service
 public class BatalhaService {

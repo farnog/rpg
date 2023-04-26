@@ -1,7 +1,6 @@
 package com.avanade.rpg.controller;
 
 import com.avanade.rpg.model.Log;
-import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.service.LogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -26,7 +26,7 @@ public class Log implements Serializable {
                 "ID=" + id +
                 ", idPersonagemAtq='" + idAtq +
                 ", idPersonagemDef='" + idDef +
-                ", Turno='" + Turno.class.toString() +
+                ", Turno='" + turno +
                 '}';
     }
 }

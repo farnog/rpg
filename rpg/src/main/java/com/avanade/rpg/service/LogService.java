@@ -1,7 +1,6 @@
 package com.avanade.rpg.service;
 
 import com.avanade.rpg.model.Log;
-import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
