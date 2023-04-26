@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 @Service
 public class PersonagemService implements ApplicationRunner {
 
-    //private static final Logger LOGGER = Logger.getLogger(PersonagemService.class.getName());
     @Autowired
     private PersonagemRepository repository;
 
@@ -98,5 +97,9 @@ public class PersonagemService implements ApplicationRunner {
         int valDano = ataque - defesa;
 
         return valDano;
+    }
+
+    public int CalcPv(int pv, int dano){
+        return ((pv - dano) <= 0) ? 0 : pv - dano;
     }
 }
