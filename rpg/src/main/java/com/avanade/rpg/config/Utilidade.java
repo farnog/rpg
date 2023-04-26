@@ -13,7 +13,7 @@ public class Utilidade {
         }
         return valor;
     }
-    public void Iniciativa(Jogador j1, Jogador j2){
+    public void Iniciativa(){
         int r1 = JogarDado(20,1);
         int r2 = JogarDado(20,1);
 

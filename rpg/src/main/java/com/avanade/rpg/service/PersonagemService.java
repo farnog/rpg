@@ -2,6 +2,7 @@ package com.avanade.rpg.service;
 
 import com.avanade.rpg.config.Utilidade;
 import com.avanade.rpg.exception.ResourceNotFoundException;
+import com.avanade.rpg.model.Jogador;
 import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.config.Utilidade;
 import com.avanade.rpg.repository.PersonagemRepository;
@@ -102,4 +103,9 @@ public class PersonagemService implements ApplicationRunner {
     public int CalcPv(int pv, int dano){
         return ((pv - dano) <= 0) ? 0 : pv - dano;
     }
+    public int Iniciativa() {
+        Utilidade util = new Utilidade();
+        return util.JogarDado(20, 1);
+    }
+
 }
