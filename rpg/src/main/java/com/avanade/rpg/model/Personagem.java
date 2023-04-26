@@ -26,4 +26,19 @@ public class Personagem implements Serializable {
     private int qtdDados;
     private int tipoDado;
     private char tipoPersonagem; // H-Herói | M-Monstro
+
+    @Override
+    public String toString() {
+        return "Personagem{" +
+                "id=" + id +
+                ", nome='" + nome +
+                ", Pontos de vida='" + pv +
+                ", forca='" + forca +
+                ", defesa='" + defesa +
+                ", agilidade='" + agilidade +
+                ", qtdDados='" + qtdDados +
+                ", tipoDado='" + tipoDado +
+                ", tipoPersonagem='" + tipoPersonagem +
+                '}';
+    }
 }

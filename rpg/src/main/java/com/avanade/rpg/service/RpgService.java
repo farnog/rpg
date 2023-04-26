@@ -3,12 +3,11 @@ package com.avanade.rpg.service;
 import com.avanade.rpg.model.Jogador;
 import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.model.Turno;
-import com.sun.source.tree.WhileLoopTree;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RpgService {
-    public void fluxo(){
+    public void Fluxo(){
         //CarregarPersonagensPadrao;
         //SelecionarPersonagens;
         Jogador jog1 = new Jogador();

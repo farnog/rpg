@@ -14,10 +14,10 @@ import java.io.Serializable;
 @Table(name="MONSTRO")
 @Entity
 
-public final class Monstro extends Personagem implements Serializable {
+public class Monstro extends Personagem implements Serializable {
     @Autowired
     private Personagem monstro;
-    public void setMonstro(Personagem monstro) {
+    public void setMonstro() {
         this.monstro.setTipoPersonagem('M');
     }
 }

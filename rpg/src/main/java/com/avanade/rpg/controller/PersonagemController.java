@@ -24,6 +24,13 @@ public class PersonagemController {
     public ResponseEntity<List<Personagem>> getAll (){
         return new ResponseEntity<>(service.Listar(), HttpStatus.OK);
     }
+
+    @GetMapping( "/rpg/{id}" )
+    @ApiOperation( "Buscar personagem pelo ID" )
+    public ResponseEntity< Personagem > getById( @PathVariable( value = "id" ) Long taskId ) {
+        return new ResponseEntity<>( service.ListarPorId( taskId ), HttpStatus.OK );
+    }
+
     @PostMapping("/rpg")
     @ApiOperation("Criar personagem")
     public ResponseEntity<Personagem> create (@RequestBody Personagem personagem) {
@@ -39,7 +46,7 @@ public class PersonagemController {
 
     @DeleteMapping("/rpg")
     @ApiOperation("Delete personagem")
-    public ResponseEntity<Personagem> update (@RequestBody Long pId) {
+    public ResponseEntity<HttpStatus> update (@RequestHeader Long pId) {
         service.delete(pId);
         return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }

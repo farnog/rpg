@@ -1,15 +1,12 @@
 package com.avanade.rpg;
 
-
-import java.util.Scanner;
-
-import com.avanade.rpg.model.Jogador;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class RpgApplication {
 	private static String Jogadores(){
+		/*
 		Scanner s = new Scanner(System.in);
 
 		System.out.println("Olá, seja bem vindo ao AVA-RPG !!!");
@@ -22,7 +19,9 @@ public class RpgApplication {
 		Jogador jog2 = new Jogador();
 		jog2.setNome(s.nextLine());
 
-		return "Que comecem os jogos: " + jog1.getNome() + " vs " + jog2.getNome();
+		 */
+
+		return "Que comecem os jogos! ";// + jog1.getNome() + " vs " + jog2.getNome();
 	}
 
 	public static void main(String[] args) {
