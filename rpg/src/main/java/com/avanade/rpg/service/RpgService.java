@@ -3,10 +3,17 @@ package com.avanade.rpg.service;
 import com.avanade.rpg.model.Jogador;
 import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.model.Turno;
+import com.avanade.rpg.repository.PersonagemRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class RpgService {
+    private PersonagemRepository personagemRepository;
+
     public void Fluxo(){
         //CarregarPersonagensPadrao;
         //SelecionarPersonagens;
@@ -21,40 +28,7 @@ public class RpgService {
 
     }
     public void Turno(Jogador j1, Jogador j2){
-        int forcaAtaque;
-        int forcaDefesa;
-        int dano;
-
         Turno turno = new Turno();
-
-        //turno.setJogadorInicio(j1.getIniciativa() > j2.getIniciativa() ? j1 : j2);
-
-        if (j1.getIniciativa() > j2.getIniciativa()) {
-            //começa com herói atacando
-            turno.setForcaAtaque(Ataque(j1.getPersonagem()));
-            //monstro defendendo
-            turno.setForcaDefesa(Defesa(j2.getPersonagem()));
-
-            if (turno.getForcaAtaque() > turno.getForcaDefesa())
-               turno.setDano(CalcularDano(j1.getPersonagem(), j2.getPersonagem()));
-
-            turno.setPvAtualizado(CalcPv(j2.getPersonagem().getPv(), turno.getDano()));
-
-        }
-        else {
-            //começa com monstro atacando
-            turno.setForcaAtaque(Ataque(j2.getPersonagem()));
-            //heroi defendendo
-            turno.setForcaDefesa(Defesa(j1.getPersonagem()));
-            if (turno.getForcaAtaque() > turno.getForcaDefesa())
-                turno.setDano(CalcularDano(j2.getPersonagem(), j1.getPersonagem()));
-
-            turno.setPvAtualizado(CalcPv(j1.getPersonagem().getPv(), turno.getDano()));
-        }
-
-        while ((j2.getPersonagem().getPv() > 0) && (j1.getPersonagem().getPv() > 0)) {
-            j2.getPersonagem().setPv(0);
-        }
     }
     public void Iniciativa(Jogador j1, Jogador j2){
         int p1 = JogarDado(20,1);
@@ -88,12 +62,5 @@ public class RpgService {
         return ((pv - dano) <= 0) ? 0 : pv - dano;
     }
 
-    public int Ataque(Personagem p){
-        return JogarDado(12, 1) + p.getForca() + p.getAgilidade();
-    }
-    public int Defesa(Personagem monstro){
-        return JogarDado(12,1) + monstro.getDefesa() + monstro.getAgilidade();
-
-    }
 
 }

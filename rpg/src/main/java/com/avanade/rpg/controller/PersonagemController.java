@@ -2,6 +2,7 @@ package com.avanade.rpg.controller;
 
 import com.avanade.rpg.model.Personagem;
 import com.avanade.rpg.service.PersonagemService;
+import com.avanade.rpg.service.RpgService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,15 @@ public class PersonagemController {
     private PersonagemService service;
 
     @GetMapping("/rpg")
-    @ApiOperation("Procurando personagem")
+    @ApiOperation("Retornar todos personagens")
     public ResponseEntity<List<Personagem>> getAll (){
         return new ResponseEntity<>(service.Listar(), HttpStatus.OK);
     }
 
     @GetMapping( "/rpg/{id}" )
     @ApiOperation( "Buscar personagem pelo ID" )
-    public ResponseEntity< Personagem > getById( @PathVariable( value = "id" ) Long taskId ) {
-        return new ResponseEntity<>( service.ListarPorId( taskId ), HttpStatus.OK );
+    public ResponseEntity< Personagem > getById( @PathVariable( value = "id" ) Long Id ) {
+        return new ResponseEntity<>( service.ListarPorId( Id ), HttpStatus.OK );
     }
 
     @PostMapping("/rpg")
@@ -38,17 +39,34 @@ public class PersonagemController {
     }
 
     @PutMapping("/rpg")
-    @ApiOperation("Update personagem")
+    @ApiOperation("Atualizar personagem")
     public ResponseEntity<Personagem> update (@RequestBody Personagem personagem) {
         service.update(personagem);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/rpg")
-    @ApiOperation("Delete personagem")
+    @ApiOperation("Deletar personagem")
     public ResponseEntity<HttpStatus> update (@RequestHeader Long pId) {
         service.delete(pId);
         return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/rpg/ataque/{id}")
+    @ApiOperation("Informação do Ataque")
+    public ResponseEntity<String> Ataque (@PathVariable( value = "id" ) long id) {
+        service.Ataque(id);
+        return new ResponseEntity<>(Integer.toString(service.Ataque(id)), HttpStatus.OK);
+    }
 
+    @GetMapping("/rpg/defesa/{id}")
+    @ApiOperation("Informação da Defesa")
+    public ResponseEntity<String> Defesa (@PathVariable( value = "id" ) long id) {
+        return new ResponseEntity<>(Integer.toString(service.Defesa(id)), HttpStatus.OK);
+    }
+
+    @GetMapping("/rpg/dano/{idAtq},{idDef}")
+    @ApiOperation("Calculo do dano")
+    public ResponseEntity<String> Dano (@PathVariable( value = "idAtq" ) long idAtq, @PathVariable( value = "idDef" ) long idDef) {
+        return new ResponseEntity<>(Integer.toString(service.CalcularDano(idAtq, idDef)),HttpStatus.OK);
+    }
 }

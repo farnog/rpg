@@ -1,7 +1,9 @@
 package com.avanade.rpg.service;
 
+import com.avanade.rpg.config.Utilidade;
 import com.avanade.rpg.exception.ResourceNotFoundException;
 import com.avanade.rpg.model.Personagem;
+import com.avanade.rpg.config.Utilidade;
 import com.avanade.rpg.repository.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -22,6 +24,7 @@ public class PersonagemService implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        repository.deleteAll();
         //Heróis
         Personagem guerreiro = new Personagem(1,"Guerreiro",20,7,5,6,1,12,'H');
         repository.save(guerreiro);
@@ -32,7 +35,7 @@ public class PersonagemService implements ApplicationRunner {
         Personagem cavaleiro = new Personagem(3,"Cavaleiro",26,6,8,3,2,6,'H');
         repository.save(cavaleiro);
 
-        //Monstro
+        //Monstros
         Personagem orc = new Personagem(4,"Orc",42,7,1,2,3,4,'M');
         repository.save(orc);
 
@@ -63,10 +66,37 @@ public class PersonagemService implements ApplicationRunner {
     }
 
     public Personagem update(Personagem personagem){
-        //if (null == personagem.getId()) {
-        //    throw new InvalidInputException( "There is no ID.");
-        //}
         return repository.save(personagem);
     }
+    public int Ataque(long id){
 
+        Personagem p = repository.getById(id);
+
+        Utilidade dado = new Utilidade();
+        int valAtaque = dado.JogarDado(12,1) + p.getForca() + p.getAgilidade();
+
+        return valAtaque;
+    }
+    public int Defesa(long id){
+        Personagem p = repository.getById(id);
+
+        Utilidade dado = new Utilidade();
+
+        int valDefesa = dado.JogarDado(12,1) + p.getDefesa() + p.getAgilidade();
+
+        return valDefesa;
+    }
+    public int CalcularDano(long idAtq, long idDef){
+        Personagem pAtq = repository.getById(idAtq);
+        Personagem pDef = repository.getById(idDef);
+
+        Utilidade dado = new Utilidade();
+
+        int ataque = dado.JogarDado(pAtq.getTipoDado(), pAtq.getQtdDados()) + pAtq.getForca();
+        int defesa = dado.JogarDado(pDef.getTipoDado(), pDef.getQtdDados());
+
+        int valDano = ataque - defesa;
+
+        return valDano;
+    }
 }

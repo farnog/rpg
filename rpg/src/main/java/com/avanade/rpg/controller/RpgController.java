@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value="/rpg")
 @Api(value= "RPG API REST")
@@ -16,24 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class RpgController {
     @Autowired
     private RpgService service;
-    @GetMapping("/rpg/ataque")
-    @ApiOperation("Ataque")
-    public ResponseEntity<Personagem> Ataque (@RequestBody Personagem pAtq) {
-        service.Ataque(pAtq);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
-    @GetMapping("/rpg/defesa")
-    @ApiOperation("Defesa")
-    public ResponseEntity<Personagem> Defesa (@RequestBody Personagem pDef) {
-        service.Defesa(pDef);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
-    @GetMapping("/rpg/dano")
-    @ApiOperation("Calculo do dano")
-    public ResponseEntity<Personagem> Dano (@RequestBody Personagem pAtq, Personagem pDef) {
-        service.CalcularDano(pAtq, pDef);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+
 }
