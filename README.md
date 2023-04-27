@@ -1,7 +1,8 @@
-# rpg
 Avanade Desafio Java - RPG
+===============================
 
 Endpoints PERSONAGEM: 
+
 GET
 /rpg/rpg 
 Exibir todos personagem
@@ -28,9 +29,11 @@ Atualizar personagem pelo ID
 DELETE
 /rpg/rpg/
 Deletar personagem pelo ID
+
 ========================================
 
 Endpoints BATALHA: 
+
 Get
 /rpg/rpg/inicio
 Executa iniciativa, retorna número inteiro.
@@ -38,9 +41,11 @@ Executa iniciativa, retorna número inteiro.
 Post
 /rpg/rpg/turno/{idAtq}{idDef}
 Inicia o turno, basta informar o id dos personagens envolvidos na batalha, id do personagem de ataque e id do personagem de defesa
+
 =========================================
 
 Endpoints LOG: 
+
 Get
 /rpg/rpg/log
 Retorna o log da batalha
