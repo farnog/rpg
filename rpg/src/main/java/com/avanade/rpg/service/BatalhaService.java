@@ -22,17 +22,19 @@ public class BatalhaService {
     @Autowired
     private LogRepository logRepository;
 
-    public String Rodada(Turno t){
+    public Turno Rodada(Turno t){
 
         Personagem pAtq = personagemRepository.getById(t.getIdAtq());
         Personagem pDef = personagemRepository.getById(t.getIdDef());
+
+        //System.out.printtln(pDef.toString());
 
         t.setJogadorInicio(pAtq.getNome());
         t.setForcaAtaque(personagemService.Ataque(t.getIdAtq()));
         t.setForcaDefesa(personagemService.Defesa(t.getIdDef()));
         t.setDano(personagemService.CalcularDano(t.getIdAtq(), t.getIdDef()));
         t.setPvAtualizado(personagemService.CalcPv(t.getDano(), t.getIdDef()));
-        t.setDescricao("Rodada: " + t.getId() +
+        t.setDescricao("Rodada:  " + t.getId() +
                        ", Atacante " + pAtq.getNome() +
                         " vs Defensor: " + pDef.getNome() +
                         ", força ataque: " + t.getForcaAtaque() +
@@ -54,7 +56,7 @@ public class BatalhaService {
             throw new InvalidInputException( "Batalha vencida por:" + pAtq.getNome());
         }
 
-        return this.batalhaRepository.save(t).toString();
+        return this.batalhaRepository.save(t);
     }
     public void GravaLog(Turno t){
 
@@ -63,7 +65,7 @@ public class BatalhaService {
         l.setId(t.getId());
         l.setIdAtq(t.getIdAtq());
         l.setIdDef(t.getIdDef());
-        l.setTurno(t.getDescricao());
+        l.setRodada(t.getDescricao());
         logRepository.save(l);
     }
     public int Iniciativa() {

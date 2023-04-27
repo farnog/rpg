@@ -38,14 +38,14 @@ public class Turno implements Serializable {
     public String toString() {
         return "Turno{" +
                 "numTurno=" + id +
-                ", jogadorInicio='" + jogadorInicio +
-                ", idAtq='" + idAtq +
-                ", idDef='" + idDef +
-                ", forcaAtaque='" + forcaAtaque +
-                ", forcaDefesa='" + forcaDefesa +
+                ", jogadorInicio=" + jogadorInicio +
+                ", idAtq=" + idAtq +
+                ", idDef=" + idDef +
+                ", forcaAtaque=" + forcaAtaque +
+                ", forcaDefesa=" + forcaDefesa +
                 ", dano='" + dano +
-                ", pvAtualizadoAposAtq='" + pvAtualizado +
-                ", Descricao:'" + Descricao +
-                '}';
+                ", pvAtualizadoAposAtq=" + pvAtualizado +
+                ", Descricao:" + Descricao +
+                "}";
     }
 }

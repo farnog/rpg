@@ -31,14 +31,14 @@ public class Personagem implements Serializable {
     public String toString() {
         return "Personagem{" +
                 "id=" + id +
-                ", nome='" + nome +
-                ", Pontos de vida='" + pv +
-                ", forca='" + forca +
-                ", defesa='" + defesa +
-                ", agilidade='" + agilidade +
-                ", qtdDados='" + qtdDados +
-                ", tipoDado='" + tipoDado +
-                ", tipoPersonagem='" + tipoPersonagem +
-                '}';
+                ", nome=" + nome +
+                ", Pontos de vida=" + pv +
+                ", forca=" + forca +
+                ", defesa=" + defesa +
+                ", agilidade=" + agilidade +
+                ", qtdDados=" + qtdDados +
+                ", tipoDado=" + tipoDado +
+                ", tipoPersonagem=" + tipoPersonagem +
+                "}";
     }
 }

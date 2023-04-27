@@ -16,17 +16,20 @@ public class Log implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID", nullable=false)
     private long id;
+    @Column(name="idAtq", nullable=true)
     private long idAtq;
+    @Column(name="idDef", nullable=true)
     private long idDef;
-    private String turno;
+    @Column(name="rodada", nullable=true)
+    private String rodada;
 
     @Override
     public String toString() {
         return "Log{" +
                 "ID=" + id +
-                ", idPersonagemAtq='" + idAtq +
-                ", idPersonagemDef='" + idDef +
-                ", Turno='" + turno +
-                '}';
+                ", idPersonagemAtq=" + idAtq +
+                ", idPersonagemDef=" + idDef +
+                ", rodada=" + rodada +
+                "}";
     }
 }

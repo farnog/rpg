@@ -21,7 +21,7 @@ public class BatalhaController {
     @PostMapping("/rpg/turno/{idAtq},{idDef}")
     @ApiOperation("Iniciar Turno")
     //public ResponseEntity<Turno> create (@RequestBody Turno turno) {
-    public ResponseEntity<String> create (@RequestBody Turno turno) {
+    public ResponseEntity<Turno> create (@RequestBody Turno turno) {
         return new ResponseEntity<>(service.Rodada(turno), HttpStatus.CREATED);
     }
 
