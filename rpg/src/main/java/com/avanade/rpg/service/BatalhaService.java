@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BatalhaService {
+    @Autowired
     private PersonagemService personagemService;
     @Autowired
     private BatalhaRepository batalhaRepository;
@@ -21,20 +22,24 @@ public class BatalhaService {
     @Autowired
     private LogRepository logRepository;
 
-    public String Rodada(long idAtq, long idDef){
+    public String Rodada(Turno t){
 
-        Turno t = new Turno();
-
-        Personagem pAtq = personagemRepository.getById(idAtq);
-        Personagem pDef = personagemRepository.getById(idDef);
+        Personagem pAtq = personagemRepository.getById(t.getIdAtq());
+        Personagem pDef = personagemRepository.getById(t.getIdDef());
 
         t.setJogadorInicio(pAtq.getNome());
-        t.setIdAtq(idAtq);
-        t.setIdDef(idDef);
-        t.setForcaAtaque(personagemService.Ataque(idAtq));
-        t.setForcaDefesa(personagemService.Defesa(idDef));
-        t.setDano(personagemService.CalcularDano(idAtq, idDef));
-        t.setPvAtualizado(personagemService.CalcPv(t.getDano(), idDef));
+        t.setForcaAtaque(personagemService.Ataque(t.getIdAtq()));
+        t.setForcaDefesa(personagemService.Defesa(t.getIdDef()));
+        t.setDano(personagemService.CalcularDano(t.getIdAtq(), t.getIdDef()));
+        t.setPvAtualizado(personagemService.CalcPv(t.getDano(), t.getIdDef()));
+        t.setDescricao("Rodada: " + t.getId() +
+                       ", Atacante " + pAtq.getNome() +
+                        " vs Defensor: " + pDef.getNome() +
+                        ", força ataque: " + t.getForcaAtaque() +
+                        ", força defesa: " + t.getForcaDefesa() +
+                        ", dano: " + t.getDano() +
+                        ", pv restante defesa: " + t.getPvAtualizado()
+                      );
 
         //Atualiza pv do personagem de defesa
         pDef.setPv(t.getPvAtualizado());
@@ -58,7 +63,7 @@ public class BatalhaService {
         l.setId(t.getId());
         l.setIdAtq(t.getIdAtq());
         l.setIdDef(t.getIdDef());
-        l.setTurno(t.toString());
+        l.setTurno(t.getDescricao());
         logRepository.save(l);
     }
     public int Iniciativa() {

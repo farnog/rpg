@@ -17,13 +17,22 @@ public class Turno implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID", nullable=false)
     private long id;
+    @Column(name="jogadorInicial", nullable=true)
     private String jogadorInicio;
+    @Column(name="idAtq", nullable=false)
     private long idAtq;
+    @Column(name="idDef", nullable=false)
     private long idDef;
+    @Column(name="forcaAtaque", nullable=true)
     private int forcaAtaque;
+    @Column(name="forcaADefesa", nullable=true)
     private int forcaDefesa;
+    @Column(name="dano", nullable=true)
     private int dano;
+    @Column(name="pvAtualizado", nullable=true)
     private int pvAtualizado;
+    @Column(name="Descricao", nullable=true)
+    private String Descricao;
 
     @Override
     public String toString() {
@@ -36,6 +45,7 @@ public class Turno implements Serializable {
                 ", forcaDefesa='" + forcaDefesa +
                 ", dano='" + dano +
                 ", pvAtualizadoAposAtq='" + pvAtualizado +
+                ", Descricao:'" + Descricao +
                 '}';
     }
 }
